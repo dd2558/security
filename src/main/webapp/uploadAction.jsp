@@ -23,6 +23,19 @@
 		String fileName = multipartRequest.getOriginalFileName("file");
 		String fileRealName = multipartRequest.getFilesystemName("file");
 		
+		// 특정 파일만 불러 올 수 있고 그 외에 파일은 불러와도 바로 삭제됨.
+				if(!fileName.endsWith(".gif") && !fileName.endsWith(".png") &&
+						!fileName.endsWith(".jpg") && !fileName.endsWith(".txt")){
+					File file = new File(directory + fileRealName);
+					file.delete();
+					out.write("업로드할 수 없는 확장자입니다.");
+				}else{
+					new FileDAO().upload(fileName, fileRealName);
+					out.write("파일명: " + fileName + "<br>");
+					out.write("실제파일명: " + fileRealName + "<br>");
+				}
+
+		
 		new FileDAO().upload(fileName, fileRealName);
 		out.write("파일명: " + fileName + "<br>");
 		out.write("실제파일명: " + fileRealName + "<br>");
