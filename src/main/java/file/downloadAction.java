@@ -46,6 +46,9 @@ public class downloadAction extends HttpServlet {
 		while((data = (fileInputStream.read(b, 0, b.length))) != -1) {
 			servletOutputStream.write(b, 0, data);
 		}
+		
+		new FileDAO().hit(fileName); // 다운로드를 1식 증가
+
 
 		servletOutputStream.flush();
 		servletOutputStream.close();
