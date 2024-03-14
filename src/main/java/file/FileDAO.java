@@ -21,7 +21,8 @@ public class FileDAO {
 	}
 	
 	public int upload(String fileName, String fileRealName) {
-		String SQL = "insert into file values(?, ?)";
+		String SQL = "insert into file values(?, ?, 0)";
+
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, fileName);

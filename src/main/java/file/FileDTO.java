@@ -16,4 +16,23 @@ public class FileDTO {
 	public void setFileRealName(String fileRealName) {
 		this.fileRealName = fileRealName;
 	}
+	
+	int downloadCount; 
+	
+	public int getDownloadCount() {
+		return downloadCount;
+	}
+	public void setDownloadCount(int downloadCount) {
+		this.downloadCount = downloadCount;
+	}
+	
+	public FileDTO(String fileName, String fileRealName, int downloadCount) {
+		super();
+		this.fileName = fileName;
+		this.fileRealName = fileRealName;
+		this.downloadCount = downloadCount;
+	}
+
+
+	
 }
